@@ -10,8 +10,14 @@ function [X, binFreqs] = myComputeSpectrogram(xb, fs, fftLength)
 % 	binFreqs:	(floor(fftLength / 2) + 1 x 1) float vector, center frequencies(Hz) of all bins
 
 %% Please insert your code here
-
-
-
+size_xb = size(xb);
+numBlocks = size_xb(2);
+i = 1;
+while i < numBlocks
+    window = xb(:,i).*hann(blockSize);
+    mag = abs(fft(window, fftLength));
+    mag = mag(1:blockSize);
+    
+end
 
 end
