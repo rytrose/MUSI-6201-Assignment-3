@@ -12,14 +12,14 @@ function [X, binFreqs] = myComputeSpectrogram(xb, fs, fftLength)
 %% Please insert your code here
 size_xb = size(xb);
 numBlocks = size_xb(2);
-binFreqs = (fs/(fftLength))*[1:(floor(fftLength / 2) + 1)];
-X = zeros(floor(fftLength / 2) + 1, numBlocks);
+frequencies = (fs/(fftLength))*[1:(floor(fftLength / 2) + 1)];
+X = zeros((floor(fftLength / 2) + 1 x numBlocks)
 i = 1;
 while i < numBlocks
     window = xb(:,i).*hann(blockSize);
     mag = abs(fft(window, fftLength));
     mag = mag(1:blockSize);
-    X(:,i) = mag;
+    
 end
 
 end
