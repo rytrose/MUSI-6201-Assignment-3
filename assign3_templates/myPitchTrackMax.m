@@ -19,13 +19,19 @@ function [f0, timeInSec] = myPitchTrackMax(x, blockSize, hopSize, fs)
 spec = myComputeSpectrogram(xb, fs, blockSize * 2);
 
 % compute f0 for each block by looking at the maximum of the spectrum of each block
-i = 1;
 spec_size = size(spec);
 numBlocks = spec_size(2);
 f0 = zeros(numBlocks, 1);
 
+i = 1;
 while i < numBlocks + 1
     pks = findpeaks(spec(:,i));
-    f0(i) = max(pks);
+    max_pk = max(pks);
+    if(isempty(max_pk))
+        f0(i) = 0;
+    else
+        f0(i) = max_pk(1);
+    end
     i = i + 1;
+end
 end
