@@ -23,13 +23,16 @@ end
 
 %% Please insert your code here based on the following steps 
 % Block audio again (this is inefficient but required for reusing code)
+[xb, timeInSec] = myBlockAudio(x, blockSize, hopSize, fs);
 
 % Compute RMS of block 
+rmsDb = myComputeRmsDb(xb);
 
 % Create voicing mask 
+mask = myCreateVoicingMask(rmsDb, voicingThres);
 
 % Apply voicing mask 
-
+f0Adj = myApplyVoicingMask(f0, mask);
 
 
 

@@ -8,6 +8,15 @@ function [mask] = myCreateVoicingMask(rmsDb, thresholdDb)
 %	mask: 		(numBlocks x 1) binary int vector
 
 %% Please insert your code here
-
+mask = zeros(length(rmsDb), 1);
+i = 1;
+while i <= length(rmsDb)
+    if rmsDb(i) < thresholdDb
+        mask(i) = 0;
+    else
+        mask(i) = 1;
+    end
+    i = i + 1;
+end
 
 end

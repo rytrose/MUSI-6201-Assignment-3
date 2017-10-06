@@ -15,11 +15,11 @@ block_len = size_xb(1);
 rmsDb = zeros(num_blocks, 1);
 i = 1;
 while i <= num_blocks
-    i = i + 1;
     block = xb(:, i);
     squared = block .* block;
     summed = sum(squared);
     rms = sqrt(summed/block_len);
     rmsDb(i) = 20*(log(rms)); % get dB
+    i = i + 1;
 end
 end
