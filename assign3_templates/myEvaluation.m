@@ -1,4 +1,4 @@
-function [errCentRms, pfp, pfn] = myEvaluation2(estimation, annotation)
+function [errCentRms] = myEvaluation(estimation, annotation)
 
 %% Evaluates the performance of a pitch tracker
 % Input:
@@ -6,8 +6,6 @@ function [errCentRms, pfp, pfn] = myEvaluation2(estimation, annotation)
 %   annotation: (numBlocks x 1) float vector, annotated pitch (Hz) per block
 % Output:
 %   errCentRms: float, rms of the difference between estInMidi and annInMidi 
-%   pfp:		float, percentage of false positives (unvoiced blocks classified as voiced)
-%	pfn:		float, percentage of false negatives (voiced blocks classified as unvoiced)
 % Note: 
 %   1) please exclude the blocks when ann(i) == 0
 
@@ -24,7 +22,6 @@ if (m1~=m2)
 end
 
 %% Please write your code here, Follow the steps as per the comments
-
 vals = zeros(length(estimation), 1);
 n = 1;
 count = 0;
@@ -45,9 +42,5 @@ vals_sqrd = vals.^2;
 vals_summed = sum(vals_sqrd);
 vals_div = vals_summed / count;
 errCentRms = sqrt(vals_div);
-
-pfp = myGetFalsePositives(estimation, annotation);
-pfn = myGetFalseNegatives(estimation, annotation);
-
 
 end

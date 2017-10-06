@@ -22,6 +22,6 @@ while i <= length(estimation)
     i = i + 1;
 end
 
-pfp = num_wrong / num_neg;
+pfp = (num_wrong / num_neg) * 100.; %multiply by 100 to get percent
 
 end

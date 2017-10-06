@@ -22,6 +22,6 @@ while i <= length(estimation)
     i = i + 1;
 end
 
-pfn = num_wrong / num_pos;
+pfn = (num_wrong / num_pos) * 100.; %multiply by 100 to get percent
 
 end
