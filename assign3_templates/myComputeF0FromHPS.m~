@@ -9,20 +9,20 @@ function [f0] = myComputeF0FromHPS(X, fs, order)
 % 	f0:			(numBlocks x 1) float vector, fundamental frequency of all blocks
 
 %% Please insert your code here
-size_x = size(X);
+size_x = size(x);
 block_len = size_x(1);
 fft_len = block_len * 2; 
 numBlocks = size_x(2);
 f0 = zeros(numBlocks, 1);
 block_index = 1;
-binFreqs = (fs/(fft_len))*[1:block_len];
+binFreqs = (fs/(fft_len))*[1:(floor(fft_len / 2) + 1)];
 while block_index <= numBlocks
     j = 2;
     spec = X(:,block_index);
     spec = spec .* spec;
     while j <= order
         down_sampled = downsample(spec, j);
-        spec(1:length(down_sampled)) = spec(1:length(down_sampled)) .* down_sampled;
+        spec(1,length(down_sampled)) = spec(1,length(down_sampled)) .* down_sampled;
         j = j + 1;
     end
     [pks, locs] = findpeaks(spec);
@@ -35,17 +35,12 @@ while block_index <= numBlocks
             max_i = locs(peaks_i);
         else
             if pks(peaks_i) > max
-                max = pks(peaks_i);
-                max_i = locs(peaks_i);
+                
             end
         end
         peaks_i = peaks_i + 1;
     end
-    if(max == -1)
-        f0(block_index) = 0;
-    else
-        f0(block_index) = binFreqs(max_i);
-    end
+    f0(block_index) = binFreqs(max_pk(1));
     block_index = block_index + 1;
 end
 

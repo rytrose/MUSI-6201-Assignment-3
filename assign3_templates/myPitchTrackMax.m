@@ -25,12 +25,26 @@ f0 = zeros(numBlocks, 1);
 
 i = 1;
 while i < numBlocks + 1
-    pks = findpeaks(spec(:,i));
-    max_pk = max(pks);
-    if(isempty(max_pk))
+    [pks, locs] = findpeaks(spec(:,i));
+    max = -1;
+    max_i = -1;
+    peaks_i = 1;
+    while peaks_i <= length(pks)
+        if max_i == -1
+            max = pks(peaks_i);
+            max_i = locs(peaks_i);
+        else
+            if pks(peaks_i) > max
+                max = pks(peaks_i);
+                max_i = locs(peaks_i);
+            end
+        end
+        peaks_i = peaks_i + 1;
+    end
+    if(max == -1)
         f0(i) = 0;
     else
-        f0(i) = max_pk(1);
+        f0(i) = binFreqs(max_i);
     end
     i = i + 1;
 end
