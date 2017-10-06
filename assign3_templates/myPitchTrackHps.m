@@ -13,10 +13,12 @@ function [f0, timeInSec] = myPitchTrackHps(x, blockSize, hopSize, fs)
 
 %% Please write your code here. Follow the steps as per the comments
 % first block the audio and get the time-stamps per block (myBlockAudio)
+[xb, timeInSec] = myBlockAudio(x, blockSize, hopSize, fs);
 
 % compute the magnitude spectrogram (myComputeSpectrogram)
+[X, binFreqs] = myComputeSpectrogram(xb, fs, blockSize);
 
 % compute f0 for each block using HPS (myComputeF0FromHPS)
-
+f0 = myComputeF0FromHPS(X, fs, 4);
 
 end
