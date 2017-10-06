@@ -9,6 +9,19 @@ function [pfn] = myGetFalseNegatives(estimation, annotation)
 
 
 %% Please insert your code here
+i = 1;
+num_pos = 0;
+num_wrong = 0;
+while i <= length(estimation)
+    if annotation(i) ~= 0
+       num_pos = num_pos + 1;
+       if estimation(i) == 0
+           num_wrong = num_wrong + 1;
+       end
+    end
+    i = i + 1;
+end
 
+pfn = num_wrong / num_pos;
 
 end

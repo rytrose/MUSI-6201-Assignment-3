@@ -15,13 +15,9 @@ num_wrong = 0;
 while i <= length(estimation)
     if annotation(i) == 0
        num_neg = num_neg + 1;
-       if estimation(i) ~= 0
-           num_wrong = num_wrong + 1;
-       end
+       if estimation(i) 
     end
     i = i + 1;
 end
-
-pfp = num_wrong / num_neg;
 
 end
