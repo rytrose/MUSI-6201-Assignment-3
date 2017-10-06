@@ -17,7 +17,11 @@ end
 pitchInMidi = zeros(length(pitchInHz), 1);
 n = 1;
 while(n <= length(pitchInHz))
-    pitchInMidi(n) = 69 + (12 * log2(pitchInHz(n)/440));
+    if pitchInHz(n) ~= 0
+        pitchInMidi(n) = 69 + (12 * log2(pitchInHz(n)/440));
+    else
+        pitchInMidi(n) = 0;
+    end
     n = n + 1;
 end
 

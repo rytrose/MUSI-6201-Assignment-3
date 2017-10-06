@@ -20,8 +20,9 @@ while block_index <= numBlocks
     j = 2;
     spec = X(:,block_index);
     spec = spec .* spec;
+    spec_copy = spec;
     while j <= order
-        down_sampled = downsample(spec, j);
+        down_sampled = downsample(spec_copy, j);
         spec(1:length(down_sampled)) = spec(1:length(down_sampled)) .* down_sampled;
         j = j + 1;
     end

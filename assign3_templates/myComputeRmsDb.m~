@@ -19,7 +19,6 @@ while i <= num_blocks
     block = xb(:, i);
     squared = block .* block;
     summed = sum(squared);
-    rms = sqrt(summed/block_len);
-    rmsDb(i) = 20*(log(rms)); % get dB
+    
 end
 end
