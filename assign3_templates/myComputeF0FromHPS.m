@@ -11,7 +11,7 @@ function [f0] = myComputeF0FromHPS(X, fs, order)
 %% Please insert your code here
 size_x = size(X);
 block_len = size_x(1);
-fft_len = block_len * 2; 
+fft_len = block_len; 
 numBlocks = size_x(2);
 f0 = zeros(numBlocks, 1);
 block_index = 1;

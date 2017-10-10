@@ -16,7 +16,7 @@ function [f0, timeInSec] = myPitchTrackMax(x, blockSize, hopSize, fs)
 [xb, timeInSec] = myBlockAudio(x, blockSize, hopSize, fs);
 
 % compute the magnitude spectrogram (myComputeSpectrogram)
-[spec, binFreqs] = myComputeSpectrogram(xb, fs, blockSize * 2);
+[spec, binFreqs] = myComputeSpectrogram(xb, fs, blockSize);
 
 % compute f0 for each block by looking at the maximum of the spectrum of each block
 spec_size = size(spec);

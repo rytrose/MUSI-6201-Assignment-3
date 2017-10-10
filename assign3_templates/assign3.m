@@ -150,7 +150,7 @@ disp('----------------------------------------------')
 disp('audio file 1 - myPitchTrackAcf - -40 thresh - rms, pfp, pfn')
 [rms1_acf_40, pfp1_acf_40, pfn1_acf_40]
 disp('----------------------------------------------')
-disp('audio file 2 - myPitchTrackAcv - -40 thresh -  rms, pfp, pfn')
+disp('audio file 2 - myPitchTrackAcf - -40 thresh -  rms, pfp, pfn')
 [rms2_acf_40, pfp2_acf_40, pfn2_acf_40]
 disp('----------------------------------------------')
 disp('audio file 3 - myPitchTrackAcf - -40 thresh -  rms, pfp, pfn')
